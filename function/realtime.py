@@ -49,7 +49,7 @@ def realtime(args):
     while True:
         # Capture frame-by-frame
         ret, frame = vs.read()
-        coutFrame = countFrame + 1
+        countFrame = countFrame + 1
         if ret:
             input_q.put(frame)
             output_rgb = cv2.cvtColor(output_q.get(), cv2.COLOR_RGB2BGR)
