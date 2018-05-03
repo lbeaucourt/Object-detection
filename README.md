@@ -16,6 +16,8 @@ Launch script:
 
 > bash runDocker.sh
 
+Volume (-v): Replace /home/leo/Documents/SandBox path by your local path to real time project.
+
 # To configure it:
 
 Configuration is made in exec.sh at python function call:
@@ -44,6 +46,10 @@ All possible arguments are:
 -l (--logger-debug), type=int, default=0: Print logger debug
 
 ```
+Suggested numbers of workers and queues size:
+
+- Webcam stream: default values
+- Video stream: 20 workers, 100 queue size (minimum)
 
 Inputs file are in inputs/ folder
 
