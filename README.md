@@ -49,7 +49,7 @@ All possible arguments are:
 Suggested numbers of workers and queues size:
 
 - Webcam stream: default values
-- Video stream: 20 workers, 100 queue size (minimum)
+- Video stream: 20 workers, 150 queue size (Maybe little hand tunning could be done)
 
 Inputs file are in inputs/ folder
 
