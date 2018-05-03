@@ -1,2 +1,1 @@
-python3 init-openCV.py
-python3 my-object-detection.py -d 1 -o 1 -i "test.mp4" -w 20 -q-size 100 
+python3 my-object-detection.py -d 1 -o 1

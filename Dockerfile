@@ -33,15 +33,20 @@ RUN pip install -U keras
 
 # Install tensorflow models object detection
 RUN git clone https://github.com/tensorflow/models /usr/local/lib/python3.5/dist-packages/tensorflow/models
-RUN apt-get install -y protobuf-compiler python-pil python-lxml python-tk
+RUN apt-get install -y python-pil python-lxml python-tk
+RUN wget -P /usr/local/src/ https://github.com/google/protobuf/releases/download/v3.5.1/protobuf-python-3.5.1.tar.gz
+RUN cd /usr/local/src/ && tar xvf protobuf-python-3.5.1.tar.gz && rm protobuf-python-3.5.1.tar.gz 
+RUN cd /usr/local/src/protobuf-3.5.1/ && ./configure && make && make install && ldconfig
 
 #add dataframe display widget
 RUN pip install -U autovizwidget && jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 # Install OpenCV
-RUN git clone https://github.com/opencv/opencv.git /usr/local/src/opencv
-RUN cd /usr/local/src/opencv/ && mkdir build
-RUN cd /usr/local/src/opencv/build && cmake -D CMAKE_INSTALL_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local/ .. && make -j4 && make install
+RUN apt-get install -y unzip
+RUN wget -P /usr/local/src/ https://github.com/opencv/opencv/archive/3.4.1.zip
+RUN cd /usr/local/src/ && unzip 3.4.1.zip && rm 3.4.1.zip
+RUN cd /usr/local/src/opencv-3.4.1/ && mkdir build
+RUN cd /usr/local/src/opencv-3.4.1/build && cmake -D CMAKE_INSTALL_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local/ .. && make -j4 && make install
 
 #Setting up working directory 
 RUN mkdir /lab
@@ -55,7 +60,5 @@ RUN (apt-get autoremove -y; \
 #Set TF object detection available
 ENV PYTHONPATH "$PYTHONPATH:/usr/local/lib/python3.5/dist-packages/tensorflow/models/research:/usr/local/lib/python3.5/dist-packages/tensorflow/models/research/slim"
 RUN cd /usr/local/lib/python3.5/dist-packages/tensorflow/models/research && protoc object_detection/protos/*.proto --python_out=.
-
-#ENV DISPLAY :0
 
 CMD bash exec.sh
