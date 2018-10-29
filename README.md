@@ -16,8 +16,6 @@ Launch script:
 
 > bash runDocker.sh
 
-Volume (-v): Replace /home/leo/Documents/SandBox path by your local path to real time project.
-
 # To configure it:
 
 Configuration is made in exec.sh at python function call:
