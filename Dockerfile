@@ -38,7 +38,7 @@ RUN  pip install -U pip \
  pandas \
  moviepy \
  tensorflow \
- keras\
+ keras \
  autovizwidget
 
 # Install tensorflow models object detection
