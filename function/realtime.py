@@ -60,7 +60,6 @@ def realtime(args):
 
             # Display the resulting frame
             if args["display"]:
-                cv2.imshow('frame', output_rgb)
                 ## full screen
                 if args["full_screen"]:
                     cv2.namedWindow("frame", cv2.WND_PROP_FULLSCREEN)
