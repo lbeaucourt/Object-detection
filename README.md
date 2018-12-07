@@ -29,6 +29,8 @@ All possible arguments are:
 
 -d (--display), type=int, default=0: Whether or not frames should be displayed
 
+-f (--fullscreen), type=int, default=0: Enable full scree
+
 -o (--output), type=int, default=0: Whether or not modified videos shall be writen
 
 -on (--output-name), type=str, default="output": Name of the output video file
