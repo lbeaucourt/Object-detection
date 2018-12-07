@@ -52,3 +52,8 @@ Suggested numbers of workers and queues size:
 Inputs file are in inputs/ folder
 
 Outputs file are in outputs/ folder (.avi)
+
+
+# Remark on Tensorflow version (from Sinan81):
+
+It turns out that beyond version 1.6, Tensorflow requires SSE4.1 compatibility. Hence one either needs to use tensorflow python package version 1.6 or earlier (which yields another runtime error) or tensorflow python package needs to be build from source.
