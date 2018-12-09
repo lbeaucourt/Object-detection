@@ -56,6 +56,8 @@ Inputs file are in inputs/ folder
 Outputs file are in outputs/ folder (.avi)
 
 
-# Remark on Tensorflow version (from Sinan81):
+# Remarks for Tensorflow on machines with older CPUs (from Sinan81):
+
+From Tensorflow developers: "Starting with TensorFlow 1.6, binaries use AVX instructions which may not run on older CPUs." Hence, on machines with older CPUS, one might get an SSE4.1 compatibility runtime error as discussed in Issue #14. Hence, Tensorflow pip package v1.5 or earlier needs to be used (which might lead to some other runtime error), or else Tensorflow pip package must be built from source as discussed in [https://www.tensorflow.org/install/source]
 
 It turns out that beyond version 1.6, Tensorflow requires SSE4.1 compatibility. Hence one either needs to use tensorflow python package version 1.6 or earlier (which yields another runtime error) or tensorflow python package needs to be build from source.
