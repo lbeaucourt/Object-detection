@@ -59,3 +59,6 @@ Outputs file are in outputs/ folder (.avi)
 # Remarks for Tensorflow on machines with older CPUs (from Sinan81):
 
 From Tensorflow developers: "Starting with TensorFlow 1.6, binaries use AVX instructions which may not run on older CPUs." Hence, on machines with older CPUS, one might get an SSE4.1 compatibility runtime error as discussed in Issue #14. Hence, Tensorflow pip package v1.5 or earlier needs to be used (which might lead to some other runtime error), or else Tensorflow pip package must be built from source as discussed in [https://www.tensorflow.org/install/source]
+
+# OS compatibility:
+This project is intended to run on Linux. No Windows or IOS compatibility is ensured. (for IOS, it seems to be impossible to use Docker this way. See [https://apple.stackexchange.com/questions/265281/using-webcam-connected-to-macbook-inside-a-docker-container] for more information)
