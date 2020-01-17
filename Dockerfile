@@ -37,7 +37,7 @@ RUN  pip install -U pip \
  jupyter \
  pandas \
  moviepy \
- tensorflow \
+ tensorflow==1.15 \
  keras \
  autovizwidget
 
