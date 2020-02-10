@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
-# Install system packages
-RUN apt-get -qq update && apt-get -qq install --no-install-recommends -y python3 \ 
+# Install system packages (python 3.5)
+RUN apt-get -qq update && apt-get -qq install --no-install-recommends -y python3.5 \ 
  python3-dev \
  python-pil \
  python-lxml \
@@ -26,9 +26,10 @@ RUN apt-get -qq update && apt-get -qq install --no-install-recommends -y python3
  vim \
  ffmpeg \
  unzip \
+ libcanberra-gtk-module \
  && rm -rf /var/lib/apt/lists/* 
 
-# Install core packages 
+# Install core packages (TF v1.15.2)
 RUN wget -q -O /tmp/get-pip.py --no-check-certificate https://bootstrap.pypa.io/get-pip.py && python3 /tmp/get-pip.py
 RUN  pip install -U pip \
  numpy \
@@ -37,16 +38,16 @@ RUN  pip install -U pip \
  jupyter \
  pandas \
  moviepy \
- tensorflow==1.15 \
+ tensorflow==1.15.2 \
  keras \
  autovizwidget
 
 # Install tensorflow models object detection
 RUN GIT_SSL_NO_VERIFY=true git clone -q https://github.com/tensorflow/models /usr/local/lib/python3.5/dist-packages/tensorflow/models
-RUN wget -q -P /usr/local/src/ --no-check-certificate https://github.com/google/protobuf/releases/download/v3.5.1/protobuf-python-3.5.1.tar.gz
 
-# Download & build protobuf-python
-RUN cd /usr/local/src/ \
+# Download & build protobuf-python 3.5.1
+RUN wget -q -P /usr/local/src/ --no-check-certificate https://github.com/google/protobuf/releases/download/v3.5.1/protobuf-python-3.5.1.tar.gz \
+ && cd /usr/local/src/ \
  && tar xf protobuf-python-3.5.1.tar.gz \
  && rm protobuf-python-3.5.1.tar.gz \
  && cd /usr/local/src/protobuf-3.5.1/ \
@@ -59,7 +60,7 @@ RUN cd /usr/local/src/ \
 # Add dataframe display widget
 RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
-# Download & build OpenCV
+# Download & build OpenCV 3.4.1
 RUN wget -q -P /usr/local/src/ --no-check-certificate https://github.com/opencv/opencv/archive/3.4.1.zip
 RUN cd /usr/local/src/ \
  && unzip 3.4.1.zip \
